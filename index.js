@@ -82,8 +82,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
 			if (text === 'hello') {
-                sendTextMessage(sender,"This is auto generated message")
-				 sendGenericMessage(sender)
+                sendTextMessage(sender,"Your message is"+text)
                 continue
             }
             sendTextMessage(sender, "parrot: " + text.substring(0, 200))
