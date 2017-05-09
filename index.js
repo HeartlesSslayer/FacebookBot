@@ -82,7 +82,8 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
 			if (text === 'hello') {
-                sendTextMessage(sender,"This is auto generated message" + text.substring(0, 200) )
+                sendTextMessage(sender,"This is auto generated message")
+				 sendGenericMessage(sender)
                 continue
             }
             sendTextMessage(sender, "parrot: " + text.substring(0, 200))
@@ -106,7 +107,7 @@ function sendTextMessage(sender, text) {
     }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: process.env.token},
+        qs: {access_token:token},
         method: 'POST',
         json: {
             recipient: {id:sender},
